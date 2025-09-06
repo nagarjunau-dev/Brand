@@ -1,0 +1,45 @@
+{% extends "main.html" %}
+{% load static %}
+
+
+{% block content %}
+
+    
+    <div class="container" style="width:100hh;height:80vh;">
+        <div class="text-center" style='padding:10px'>
+            <a class="btn btn-info" href="{% url "checkout" %}">CheckOut</a>
+        </div>
+        <div class="row g-5" style='padding:30px;'>
+            {% for i in cart_products %}
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                    <div class="card ">
+                        <div class="card-header text-center">
+                            <img src="{{i.image.url}}" alt="card-header" style='width:100px;height:100px'>
+                        </div>
+                        <div class="card-body">
+                            <h3>{{i.name}}</h3>
+                            <p>Rs. {{i.total_price}}</p>
+                            <div class="d-flex align-item-center">
+                                <p>Quantity: {{i.quantity}}</p>
+                                {% comment %} <div class="btn-group ms-3">
+                                    <button class="btn btn-secondary">+</button>                                   
+                                    <button class="btn btn-secondary">-</button>
+                                </div> {% endcomment %}
+                                 {% for item in cart %}
+                                <button><a href="{% url "remove_from_cart" item.id %}">Remove</a></button>
+                            {% endfor %}
+                            </div>
+                           
+                                {% comment %} {% for item in cart_products %}                    
+                                    <a class="del-btn" href="{% url 'remove_from_cart' id=item.id %}">Remove</a>
+                                {% endfor %}    {% endcomment %}
+                                
+                             
+                        </div>
+                    </div>
+                </div>
+            
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

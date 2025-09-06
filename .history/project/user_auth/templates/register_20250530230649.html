@@ -1,0 +1,30 @@
+{% extends "main.html" %}
+{% load static %}
+ {% block reg_css %}
+<link rel="stylesheet" href="{% static "css/reg.css" %}">
+{% endblock reg_css %}
+{% block content %}
+
+<div class="wrap">
+    <form action="#" method="POST">
+        <h1>Register</h1>
+        <div class="reg">
+            {% csrf_token %}
+            <input type="text" placeholder="firstname" name="firstname" required>   
+      
+            <input type="text" placeholder="lastname" name="lastname"  required>  
+       
+            <input type="text" placeholder="username" name="username"  required>   
+      
+            <input type="email" placeholder="Email" name="email"  required>   
+      
+            <input type="password" placeholder="Password" name="password"  required>
+        </div>
+        <button  type="submit" class="btn">Sign Up</button>
+        <div class="reg-link">
+            <p>Don you have a account ? <a href="{% url "login" %}" >Login</a></p>
+        </div>
+        
+    </form>
+</div>
+{% endblock content %}

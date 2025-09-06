@@ -1,0 +1,96 @@
+/* *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background:whitesmoke;
+}
+nav {
+    display: flex;
+    background-color: rgb(147, 145, 151);
+    align-items: center;
+    padding: 10px 20px 10px 0px;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+}
+.container {
+    width: 10rem;
+    margin-left: 30px;
+}
+.nav-links{
+    display: flex;
+    list-style-type: none;
+    margin-left: 850px;
+    gap: 20px;
+}
+.nav-links a{
+    text-decoration: none;
+    color: white;
+
+} */
+h1{
+    text-align: center;
+}
+.wrap{
+    box-shadow: inset;
+    background: white;
+    height: 450px;
+
+}
+.reg{
+    display: grid;
+    justify-content: center;
+
+}
+.reg input{
+    width: 300px;
+    padding: 10px;
+    gap: 30px;
+    margin: 10px;
+    
+}
+.wrap button{
+    height: 30px;
+    width: 70px;
+    margin-left: 120px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: grid;
+    gap:20px;
+    text-align: center;
+
+ 
+}
+.wrap button:hover{
+    background-color: rgb(176, 96, 74);
+}
+.reg-link p a{
+    color: black;
+    margin-left: 20px;
+}
+.reg-link p{
+     
+     margin: 20px 20px;
+}
+
+.profile-tb{
+    border: inset;
+    background-color: black;
+    color: white;
+    height: 200px;
+    width: 200px;
+}
+.profile .profile-tb{
+    padding: auto;
+    
+}
+
+
+

@@ -1,0 +1,25 @@
+{% extends "main.html" %}
+{% load static %}
+<link rel="stylesheet" href="{% static "css/reg.css" %}">
+
+{% block content %}
+
+<div class="wrap">
+    <form action="#" method="POST">
+        <h1>Login</h1>
+        <div class="reg">
+            <input type="text" placeholder="firstname" name="firstname" required>   
+      
+            <input type="text" placeholder="lastname" name="lastname"  required>  
+       
+            <input type="text" placeholder="username" name="username"  required>   
+      
+            <input type="email" placeholder="Email" name="email"  required>   
+      
+            <input type="password" placeholder="Password" name="password"  required>
+        </div>
+        
+        <button  type="submit" class="btn">Sign Up</button>
+    </form>
+</div>
+{% endblock content %}

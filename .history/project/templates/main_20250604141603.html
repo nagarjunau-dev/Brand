@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {% comment %} <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link rel="stylesheet" href="{% static "css/reg.css" %}">  {% endcomment %}
+    <link rel="stylesheet" href="{% static "css/nav.css" %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous/>
+    {% block stl_css %}{% endblock stl_css %}
+    {% block reg_css %}{% endblock reg_css %}
+</head> 
+<body>
+    {% include "navbar.html" %}
+    {% block content %}
+    
+    {% endblock content %}
+    <script src="{% static "js/script.js" %}"></script>
+    
+</body>
+</html>
+
+
+
+
+
+

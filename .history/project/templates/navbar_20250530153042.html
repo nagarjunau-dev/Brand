@@ -1,0 +1,14 @@
+{% load static %}
+
+<nav>
+    <div class="container">
+        <ul class="nav-links">
+            <li><a href="{% url "index" %}">Home</a></li>
+            <li><a href="{% url "about" %}">About</a></li>
+            <li><a href="{% url "admin" %}">Admin</a></li>
+            {% if  %}{% endif %}
+            <li><a href="{% url "register" %}">Register</a></li>
+            <li><a href="{% url "login" %}">Login</a></li>
+        </ul>
+    </div>
+</nav>

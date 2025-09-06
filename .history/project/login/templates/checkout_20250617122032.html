@@ -1,0 +1,94 @@
+{% extends "main.html" %}
+{% load static %}
+{% comment %} {% block content %}
+    <div class="container">
+        <h1>Checkout</h1>
+        <div class="check">
+            <table class="table-cell-padding-y">
+                <tr>
+                    <td><input type="text" placeholder="firstname" name="first_name" required></td>
+                    <td><input type="text" placeholder="lastname" name="first_name" required></td>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="streetadress" name="street" required></td>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="landmark" name="landmark"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="city" name="city" required></td>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="state" name="state" required></td>
+                    <td><input type="number" placeholder="zipcode" name="zipcode" required></td>
+                </tr>
+                <tr>
+                    <td><input type="phone" placeholder="Phone Number" name="phone_number"></td>
+                </tr>
+
+            </table>
+                
+      
+          
+
+        </div>
+
+    </div>
+
+{% endblock content %} {% endcomment %}
+
+{% comment %} {% extends "main.html" %}
+{% load static %}
+{% block check_css %}
+<link rel="stylesheet" href="{% static "css/checkout.css" %}">
+{% endblock check_css  %} 
+{% block title %} 
+    <title>check out </title>
+{% endblock title  %} {% endcomment %}
+
+{% block content %}
+<div class="container" style="height:100vh;margin:70px 0;">
+    <div class="row mt-5">
+
+        <div class="col">
+            <p>Delievery address</p>
+            <form method="post" class='form'>
+                <div class="mb-2" style="width:100%">
+                    <input  class="mb-2" type="text" placeholder="firstname" name="firstname">
+                    <input type="text" placeholder="lastname" name="lastname">
+                </div>
+                <div class="mb-2" style="width:100%">
+                    <textarea style="width:100%" name="address" placeholder="address"></textarea> 
+                </div>
+                <div>
+                    <button type="submit">save and proceed</button>
+                </div>
+            </form>
+        </div>
+        <div class="col">
+            <div class="d-flex" style:"margin:0 30px;">
+            <p><b>Cart summary</b></p>
+            <a  href="{% url "cart" %}">Edit</a>
+            </div> 
+              <table class="table">
+                <tr class="table-dark">
+                    <td><p>name</p></td>
+                    <td><p>quantity</p></td>
+                    <td><p>Total price</p></td>
+                </tr>
+            {% for product in cart_products  %}
+                <tr>
+                    <td><p>{{product.name}}</p></td>
+                    <td><p>{{product.quantity}}</p></td>
+                    <td><p>{{product.total_price}}</p></td>
+                </tr> 
+            {% endfor %}
+            <tfoot class="table-info">
+                <td><p>subtotal</p></td>
+                <td><p>{{total_quantity}}</p></td>
+                <td><p>{{subtotal}}</p></td>
+            </tfoot>
+        </div>
+    </div>
+</div>
+{% endblock content %}

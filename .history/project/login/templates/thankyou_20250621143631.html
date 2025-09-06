@@ -1,0 +1,30 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <h1>Thank You for Your Order!</h1>
+            
+            <h3>Your Shipping Address:</h3>
+            <p><strong>Type:</strong> {{ useraddress.addresstype }}</p>
+            <p><strong>Name:</strong> {{ useraddress.fullname }}</p>
+            <p><strong>Phone:</strong> {{ useraddress.phonenumber }}</p>
+            <p><strong>Pincode:</strong> {{ useraddress.pincode }}</p>
+            <p><strong>Email:</strong> {{ useraddress.email }}</p>
+            <p><strong>Address:</strong> {{ address.deliveryaddress }}</p>
+
+           
+            {% comment %} {% for i in useraddress %}
+            <div class='col-sm-12 col-md-6'>
+                <h1>{{i.addresstype}}</h1>
+                <h2>{{i.fullname}}</h2>
+                <p>{{i.phonenumber}}</p>
+                <p>{{i.pincode}}</p>
+                <p>{{i.email}}</p>
+                <p>{{i.deliveryaddress}}</p>
+            </div>           
+            {% endfor %} {% endcomment %}
+        </div>
+        
+    </div>
+{% endblock content %} 

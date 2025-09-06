@@ -1,0 +1,21 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <h1>Thank You </h1>
+        <div class="row">
+            <h2>Your order deliver on this address</h2>
+            {% for i in useraddress %}
+            <div class='col-sm-12 col-md-6'>
+                <h1>{{i.addresstype}}</h1>
+                <h2>{{i.fullname}}</h2>
+                <p>{{i.phonenumber}}</p>
+                <p>{{i.pincode}}</p>
+                <p>{{i.email}}</p>
+                <p>{{i.deliveryaddress}}</p>
+            </div>           
+            {% endfor %}
+        </div>
+        
+    </div>
+{% endblock content %} 

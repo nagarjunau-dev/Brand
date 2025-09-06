@@ -1,0 +1,41 @@
+{% extends "main.html" %}
+{% load static %}
+
+
+{% block content %}
+
+    <div class="container" style="background-color:aqua;width:100hh;height:80vh;">
+        <div class="row g-5">
+            {% for i in cart_products %}
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                    <div class="card ">
+                        <div class="card-header text-center">
+                            <img src="{{i.image.url}}" alt="card-header" style='width:100px;height:100px'>
+                        </div>
+                        <div class="card-body">
+                            <h3>{{i.name}}</h3>
+                            <p>Rs. {{i.total_price}}</p>
+                            <div class="d-flex align-item-center">
+                                <p>Quantity: {{i.quantity}}</p>
+                                {% comment %} <div class="btn-group ms-3">
+                                    <button class="btn btn-secondary">+</button>                                   
+                                    <button class="btn btn-secondary">-</button>
+                                </div> {% endcomment %}
+                            </div>
+                            
+                            {% for product_id, item in cart.items %}
+                                <div>
+                                    <p>{{ item.name }} - {{ item.quantity }}</p>
+                                    <a class="btn btn-danger" href="{% url 'remove_from_cart' product_id=id %}">Remove
+                                    </a>
+                                </div>
+                            {% endfor %}
+                            
+                        </div>
+                    </div>
+                </div>
+            
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

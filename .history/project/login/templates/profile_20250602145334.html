@@ -1,0 +1,31 @@
+{% extends "main.html" %}
+{% load static %}
+ {% block reg_css %}
+<link rel="stylesheet" href="{% static "css/reg.css" %}">
+{% endblock reg_css %}
+
+
+{% block content %}
+
+<div class="profile">
+    <table class='profile-tb'>
+        <tr>
+            <h2 style='text-align:center;'>Profle</h2>
+        </tr>
+        <tr>
+            <td>Username:</td>
+            <td>{{request.user.username}}</td>  
+        </tr>
+         <tr>
+            <td>Firstname:</td>
+            <td>{{request.username}}</td>  
+        </tr>
+        <tr id='log'>
+            <td colspan='2'>
+            <button><a id="logout" href="{% url "logout" %}">logout</a></button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+{% endblock content %}

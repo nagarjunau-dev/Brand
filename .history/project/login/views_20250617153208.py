@@ -1,0 +1,96 @@
+from django.shortcuts import render,redirect,get_object_or_404
+from . models import Product,Cart
+from django.contrib.auth.decorators import login_required
+from django.db.models import Q
+
+
+
+
+
+# Create your views here.
+def home(request):
+    all_products = Product.objects.all()
+    return render(request, 'index.html',{'all_products':all_products})
+
+def pdp(request,id):
+    product = Product.objects.get(id=id)
+    return render(request, 'description.html',{'product':product})
+
+@login_required(login_url='login')
+def cart(request):
+    if request.user.is_authenticated:
+        cart_products=Cart.objects.filter(host=request.user)
+        count = Cart.objects.filter(host=request.user).count()
+    return render(request, 'cart.html',{"cart_products":cart_products})
+
+def addtocart(request,id):
+    p = Product.objects.get(id=id)
+    try:
+        x=Cart.objects.get(host=request.user, name=p.name)
+        x.quantity += 1
+        x.total_price +=p.price
+        x.save()
+    except:
+        cart_obj= Cart.objects.create(name=p.name,price=p.price,desc=p.desc,image=p.image,total_price=p.price,host=request.user)
+        cart_obj.save()
+    return redirect('cart')
+    
+def admin(request):
+    return render(request,'admin.html')
+
+def profile(request):
+    return render(request,'profile.html')
+
+
+
+# def remove_from_cart(request, id):
+#     cart_item = get_object_or_404(Cart, id=id, host=request.user)
+#     if cart_item.quantity > 1:
+#         cart_item.quantity -= 1
+#         cart_item.total_price -= cart_item.price
+#         cart_item.save()
+#     else:
+#         cart_item.delete()
+#     return redirect('cart')  # replace with your cart page URL name
+
+def remove_cart(request,id):
+    Cart.objects.get(id=id).delete()
+    return redirect('cart')
+
+
+def checkout(request):
+    cart_products=Cart.objects.filter(host=request.user)
+    product_total=0
+    total_quantity=0
+    gst=0
+    shipping_chg
+    total_price=0
+
+    for i in cart_products:
+        product_total += i.total_price
+        total_quantity += i.quantity
+    return render(request,'checkout.html',
+                {"cart_products":cart_products,
+                "product_total":product_total,
+                "total_quantity":total_quantity})
+
+def search_view(request):
+    query = request.GET.get('search')
+    if query:
+        result = Product.objects.filter(
+            Q(name__icontains=query) | Q(desc__icontains=query)
+        )
+    else:
+        result = Product.objects.all()
+    return render(request,'index.html',{'result':result})
+
+
+def buynow(request):
+    items=Cart.objects.filter(host=request.user)
+    gst =0.8
+    total=0
+    for i in items:
+        gst +=i.quantity
+        total += i.total_price +gst
+
+    return render(request,'buynow.html',{"items":items,"gst":gst,"total":total})

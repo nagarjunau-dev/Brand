@@ -1,0 +1,72 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+<div class="container pd-3">
+    <div class="row">
+        <div class="col">
+            <div class="container-fluid">         
+                <table class="table table-responsive ">
+                        <tr class="table-dark">
+                            <td><p>Details</p></td> 
+                            <td><p>Prices</p></td>                    
+                            
+                        </tr>
+                    {% for i in items  %}
+                        <tr>
+                            <td><p>{{i.gst}}</p></td>                  
+                            <td><p>{{i.total}}</p></td>
+                        </tr> 
+                    {% endfor %}
+                    <tfoot class="table">
+                        <td><p>Total</p></td>
+                        <td><p>{{total}}</p></td>                
+                    </tfoot>
+                    <tfoot class="table">
+                        <td><p>GST</p></td>               
+                        <td><p>{{gst}}</p></td>
+                    </tfoot> 
+                </table>
+            </div>
+        </div>
+        <div class="col">
+            <p>Pay Now</p>
+                <form method="POST" class='form'>
+                    <select id="paymentMethod" onchange="showFields()">
+                        <option value="">-- Choose a payment method --</option>
+                        <option value="credit">Credit Card</option>
+                        <option value="paypal">PayPal</option>
+                        <option value="upi">UPI</option>
+                    </select>
+
+                    <!-- Credit Card Fields -->
+                    <div id="creditFields" class="payment-fields">
+                        <label for="cardName">Name on Card:</label><br>
+                        <input type="text" id="cardName" name="cardName"><br><br>
+
+                        <label for="cardNumber">Card Number:</label><br>
+                        <input type="text" id="cardNumber" name="cardNumber"><br><br>
+                    </div>
+
+                    <!-- PayPal Fields -->
+                    <div id="paypalFields" class="payment-fields">
+                        <label for="paypalEmail">PayPal Email:</label><br>
+                        <input type="email" id="paypalEmail" name="paypalEmail"><br><br>
+                    </div>
+
+                    <!-- UPI Fields -->
+                    <div id="upiFields" class="payment-fields">
+                        <label for="upiId">UPI ID:</label><br>
+                        <input type="text" id="upiId" name="upiId"><br><br>
+                    </div>
+
+                    <div>
+                        <button type="submit">Order Now</button>
+                    </div>
+                </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+<script href="{% static "js/script.js" %}"></script>

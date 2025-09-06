@@ -1,0 +1,26 @@
+{% extends "main.html" %}
+{% load static %}
+
+
+
+{% block content %}
+
+<div class="profile">
+    <table class='profile-tb'>
+        <tr>
+            <td>Username:</td>
+            <td>{{request.user.username}}</td>  
+        </tr>
+         <tr>
+            <td>Firstname:</td>
+            <td>{{request.username}}</td>  
+        </tr>
+        <tr>
+            <td colspan='2'>
+
+            </td>
+        </tr>
+    </table>
+</div>
+
+{% endblock content %}

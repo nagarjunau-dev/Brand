@@ -1,0 +1,23 @@
+from django.shortcuts import render
+from . models import Product
+
+
+# Create your views here.
+def home(request):
+    all_products = Product.objects.all()
+    return render(request, 'index.html',{'all_products':all_products})
+
+def pdp(request):
+    print(id)
+    return re
+
+def about(request):
+    return render(request, 'about.html')
+
+def admin(request):
+    return render(request,'admin.html')
+
+def profile(request):
+    return render(request,'profile.html')
+
+

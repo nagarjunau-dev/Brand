@@ -1,0 +1,41 @@
+{% extends "main.html" %}
+{% load static %}
+ {% block reg_css %}
+<link rel="stylesheet" href="{% static "css/reg.css" %}">
+{% endblock reg_css %}
+
+
+{% block content %}
+
+<div class="profile">
+    <table class='profile-tb' cellpadding='1'>
+        <tr>
+            <h2 style='text-align:center;'>Profle</h2>
+            {% comment %} <img src="{% static "images/images.jpg" %}" alt=""> {% endcomment %}
+        </tr>
+        <tr>
+           
+            <td>Username :</td>
+            <td>{{request.user.username}}</td>  
+        </tr>
+         <tr>
+            <td>Firstname :</td>
+            <td>{{request.username}}</td>  
+        </tr>
+        <tr>
+            <td>Lastname :</td>
+            <td>{{request.lastname}}</td>  
+        </tr>
+        <tr>
+            <td>Email :</td>
+            <td>{{request.email}}</td>  
+        </tr>
+        <tr>
+            <td colspan='2'>
+            <button><a id="logout" href="{% url "logout" %}">Logout</a></button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+{% endblock content %}

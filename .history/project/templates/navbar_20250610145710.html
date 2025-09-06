@@ -1,0 +1,20 @@
+{% load static %}
+
+<nav>
+    <div class="container">
+        <ul class="nav-links">
+            <li><a href="{% url "home" %}">Home</a></li>
+            <li><a href="{% url "cart" %}">Cart <sup>{{count}}</sup></a></li>
+            <li><a href="{% url "admin" %}">Admin</a></li>
+            {% if request.user.is_authenticated %}
+                <li><a id="logout" href="{% url "logout" %}">logout</a></li>
+                <li><a id="logout" href="{% url "profile" %}"><i class="fa-solid fa-user" style='class:black'></i></a></li>
+
+            {% else %}
+            <li><a  href="{% url "register" %}">Register</a></li>
+            <li><a href="{% url "login" %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+

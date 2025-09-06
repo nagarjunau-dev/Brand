@@ -1,0 +1,25 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+<title>Shopping mart 24/7</title>
+<div class="container">
+    <div class="row">
+        {% for product in all_product %}
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xl-3">
+            <div class="card text-header">
+                <img src="{{product.image}}" alt="product">
+            </div>
+            <div class="card-body">
+                <h5>{{product.name}}</h5>
+                <p>{{product.price}}</p>
+            </div>
+        </div>
+        
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}
+
+
+

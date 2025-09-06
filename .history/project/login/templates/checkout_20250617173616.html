@@ -1,0 +1,90 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+<div class="container" style="height:100vh;margin:70px 0;">
+    <div class="row mt-4">
+        <div class="col mt-2">
+            <div class="d-flex ">
+            <p><b>Cart Summary</b></p>
+            <a class='px-4'href="{% url "cart" %}">Edit</a>
+            <a href="{% url "buynow" %}">Buynow</a>
+            </div> 
+            <table class="table">
+                <tr class="table-dark">
+                    <td><p>name</p></td>
+                    <td><p>quantity</p></td>
+                    <td><p>Total price</p></td>
+                </tr>
+            {% for product in cart_products  %}
+                <tr>
+                    <td><p>{{product.name}}</p></td>
+                    <td><p>{{product.quantity}}</p></td>
+                    <td><p>{{product.total_price}}</p></td>
+                </tr> 
+            {% endfor %}
+            <tfoot class="table-info">
+                <td><p>subtotal</p></td>
+                <td><p>{{total_quantity}}</p></td>
+                <td><p>{{product_total}}</p></td>
+            </tfoot>
+            </table>
+        </div>
+        <div class="col">
+            <div class="container-fluid mt-5">         
+                <table class="table table-responsive ">
+                    <tr class="table-dark">
+                        <td><p>Details</p></td> 
+                        <td><p>Prices</p></td>                                                   
+                    </tr>
+                    {% for i in cart_products  %}
+                        <tr>
+                            <td><p>{{i.gst}}</p></td>                  
+                            <td><p>{{i.total}}</p></td>
+                        </tr> 
+                    {% endfor %}
+                        <tr>
+                            <td><p>GST</p></td>
+                            <td><p>{{gst_amt|floatformat:2}}</p></td>                
+                        </tr>
+                        <tr>
+                            <td><p>Shipping_charges</p></td>
+                            <td><p>{{shipping_charges}}</p></td>
+                        </tr>
+                        <tr>
+                            <td><p>Total</p></td>               
+                            <td><p>{{total_price|floatformat:2}}</p></td>
+                        </tr> 
+                </table>
+            </div>
+        </div>  
+    </div>
+    <div class="col">
+            <p>Delievery address</p>
+            <form method="POST" class='form'>
+                <label>
+                    <input type="radio" name="address" value="home" onclick="showFields('home')"> Home
+                </label>
+                <label>
+                    <input type="radio" name="address" value="office" onclick="showFields('office')"> Office
+                </label>
+                <div id="homefield">
+                    <div id="homefield" class="mb-2" style="width:100%">
+                        <label for="cardName"></label>
+                        <input   class="mb-2" type="text" placeholder="Fullname" name="fullname">
+                        <input   type="tel" pattern="[6-9] {1} [0-9] {9}"placeholder="Phone Number" name="number">
+                    </div>
+                    <div id="homefield" class="mb-2">
+                        <input  type="pin" placeholder="Pincode" name="pincode">
+                    </div>
+                    <div id="homefield" class="mb-2" style="width:100%">
+                        <textarea  style="width:100%" name="address" placeholder="Address"></textarea> 
+                    </div>
+                </div>
+                <div>
+                    <button type="submit">save and proceed</button>
+                </div>
+            </form>
+    </div>
+</div>
+{% endblock content %}
+<script src="{% static "js/script.js" %}"></script>

@@ -1,0 +1,30 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+    <div class="col">           
+              <table class="table">
+                <tr class="table-dark">
+                    <td><p>Details</p></td> 
+                    <td><p>Prices</p></td>                    
+                    
+                </tr>
+            {% for i in items  %}
+                <tr>
+                    <td><p>{{product.gst}}</p></td>                  
+                    <td><p>{{product.total}}</p></td>
+                </tr> 
+            {% endfor %}
+            <tfoot class="table-info">
+                <td><p>GST</p></td>
+                <td><p>{{gst}}</p></td>                
+            </tfoot>
+             <tfoot class="table-info">
+                <td><p>Total</p></td>
+                
+                <td><p>{{total}}</p></td>
+             </tfoot>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

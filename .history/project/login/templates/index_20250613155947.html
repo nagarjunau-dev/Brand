@@ -1,0 +1,61 @@
+{% extends "main.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static "css/reg.css" %}">
+{% endblock extra_css %} 
+
+{% block title %}
+<title>Shopping mart 24/7 -home</title>
+{% endblock title %}
+
+{% block content %} 
+<div class="container">
+    <div class="row g-5">
+        <form action="{% url "search" %}" method="GET" class="search-form">
+            <input type="text" placeholder="search product" class="search-field bg-access">
+            <button type='submit'>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </form>
+        <div class="row">
+            {% for i in result %}
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3" >
+                    <a href="{% url "description" i.id %}">
+                    <div class="card text-center" style='text-decoration:none;'>
+                        <div class="card-header">
+                            <img src="{{product.image.url}}" alt="product" style='width:100px;height:100px'>
+                        </div>
+                        <div class="card-body decoration-none" >
+                            <h5 >{{i.name}}</h5>
+                            <p>{{i.price}} /-</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        
+        
+        {% for product in all_products %}
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3" >
+            <a href="{% url "description" product.id %}">
+            <div class="card text-center" style='text-decoration:none;'>
+                <div class="card-header">
+                    <img src="{{product.image.url}}" alt="product" style='width:100px;height:100px'>
+                </div>
+                <div class="card-body decoration-none" >
+                    <h5 >{{product.name}}</h5>
+                    <p>{{product.price}} /-</p>
+                </div>
+            </div>
+            </a>
+        </div>
+        
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}
+
+
+

@@ -1,0 +1,14 @@
+{% extends "main.html" %}
+{% block content %}
+
+<div class="profile">
+    <table>
+        <tr>
+            <td>Username</td>
+            <td>{{request.user.user}}</td>
+            
+        </tr>
+    </table>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,31 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+    <div class="col">
+        <div class="container-fluid">         
+            <table class="table table-responsive w-90">
+                    <tr class="table-dark">
+                        <td><p>Details</p></td> 
+                        <td><p>Prices</p></td>                    
+                        
+                    </tr>
+                {% for i in items  %}
+                    <tr>
+                        <td><p>{{i.gst}}</p></td>                  
+                        <td><p>{{i.total}}</p></td>
+                    </tr> 
+                {% endfor %}
+                <tfoot class="table">
+                    <td><p>Total</p></td>
+                    <td><p>{{total}}</p></td>                
+                </tfoot>
+                <tfoot class="table">
+                    <td><p>GST</p></td>               
+                    <td><p>{{gst}}</p></td>
+                </tfoot> 
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
