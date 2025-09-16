@@ -12,7 +12,7 @@ A full-stack **E-commerce web application** built with **Django**, designed to p
 
 ## 🛠️ Tech Stack  
 - **Backend:** Django, Python  
-- **Frontend:** HTML5, CSS3, JavaScript  
+- **Frontend:** HTML5, CSS3, JavaScript, Bootstrap  
 - **Database:** MySQL / SQLite3  
 - **Tools & Version Control:** Git, GitHub  
 
